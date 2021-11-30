@@ -1,4 +1,4 @@
-clear;
+  clear;
 rm = javax.swing.RepaintManager.currentManager([]);
 dim = rm.getDoubleBufferMaximumSize();
 rm.setDoubleBufferMaximumSize(java.awt.Dimension(0,0));  % clear
