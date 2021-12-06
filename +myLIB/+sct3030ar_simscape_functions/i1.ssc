@@ -1,0 +1,17 @@
+function result = i1(v,w,aWarning,crossZero,expXh,expXl,hyperbolicMaximumAbsolute,t0,temp)
+% function result = i1(v,w,aWarning,crossZero,expXh,expXl,hyperbolicMaximumAbsolute,t0,temp)
+% Function automatically generated from a SPICE netlist for subcircuit SCT3030AR.
+
+%   MATLAB version: 9.11.
+%   Simscape Electrical version: 7.6.
+%   Simscape code generated on: 03-Dec-2021 00:34:24
+
+definitions
+    result = myLIB.sct3030ar_simscape_functions.v3(v,aWarning,expXh,expXl,hyperbolicMaximumAbsolute,t0,temp)*(1+2.227*( ...
+            tanh((myLIB.sct3030ar_simscape_functions.v3(v,aWarning,expXh,expXl,hyperbolicMaximumAbsolute,t0,temp)-26.11)/42.99)+1)*simscape.function.expm(( ...
+            temp-t0)/-179.1, expXl, expXh, aWarning)/10)* w/(simscape.function.abs(w, crossZero)+2.227*(tanh((myLIB.sct3030ar_simscape_functions.v3( ...
+            v,aWarning,expXh,expXl,hyperbolicMaximumAbsolute,t0,temp)-26.11)/42.99)+1)*simscape.function.expm((temp-t0)/-179.1,  ...
+            expXl, expXh, aWarning));
+end
+
+end

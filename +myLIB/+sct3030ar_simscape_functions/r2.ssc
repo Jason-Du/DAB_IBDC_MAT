@@ -1,0 +1,13 @@
+function result = r2(i)
+% function result = r2(i)
+% Function automatically generated from a SPICE netlist for subcircuit SCT3030AR.
+
+%   MATLAB version: 9.11.
+%   Simscape Electrical version: 7.6.
+%   Simscape code generated on: 03-Dec-2021 00:34:24
+
+definitions
+    result = i*(1.0*(1+tanh(i))/2+5.8*(1-tanh(i))/2);
+end
+
+end

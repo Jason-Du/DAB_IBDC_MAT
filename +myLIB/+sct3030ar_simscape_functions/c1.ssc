@@ -1,0 +1,14 @@
+function result = c1(u,v,w,aWarning,dropPowerFlag,dropPowerHypEpsilon)
+% function result = c1(u,v,w,aWarning,dropPowerFlag,dropPowerHypEpsilon)
+% Function automatically generated from a SPICE netlist for subcircuit SCT3030AR.
+
+%   MATLAB version: 9.11.
+%   Simscape Electrical version: 7.6.
+%   Simscape code generated on: 03-Dec-2021 00:34:23
+
+definitions
+    result = (582.4*v+1473*simscape.function.powerRational(1-w/1.117, -0.4415, dropPowerFlag, dropPowerHypEpsilon,  ...
+            aWarning))*(0.1835*tanh((u+7.522)/3.213)+0.8165);
+end
+
+end

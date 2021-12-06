@@ -1,0 +1,15 @@
+function result = r1(i,aWarning,crossZero,dropPowerFlag,dropPowerHypEpsilon,expXh,expXl,t0,temp)
+% function result = r1(i,aWarning,crossZero,dropPowerFlag,dropPowerHypEpsilon,expXh,expXl,t0,temp)
+% Function automatically generated from a SPICE netlist for subcircuit SCT3030AR.
+
+%   MATLAB version: 9.11.
+%   Simscape Electrical version: 7.6.
+%   Simscape code generated on: 03-Dec-2021 00:34:24
+
+definitions
+    result = (17.94*0.001)*i*simscape.function.expm((temp-t0)/196.8, expXl, expXh, aWarning)+(1.914*1e-06)*i*simscape.function.powerRational( ...
+            simscape.function.abs(i, crossZero), 1.526, dropPowerFlag, dropPowerHypEpsilon, aWarning)*simscape.function.expm(( ...
+            temp-t0)/950.4, expXl, expXh, aWarning);
+end
+
+end

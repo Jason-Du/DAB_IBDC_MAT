@@ -1,0 +1,210 @@
+component sct3030ar
+% sct3030ar
+% Component automatically generated from a SPICE netlist for subcircuit SCT3030AR.
+%   MATLAB version: 9.11.
+%   Simscape Electrical version: 7.6.
+%   Simscape code generated on: 03-Dec-2021 00:34:25
+
+
+    nodes
+        node_1 = foundation.electrical.electrical; % drain        
+        node_2 = foundation.electrical.electrical; % node_2
+        node_3 = foundation.electrical.electrical; % node_3
+        node_4 = foundation.electrical.electrical; % node_4
+    end
+
+    nodes(Access=protected, ExternalAccess=none)
+        node_11 = foundation.electrical.electrical;
+        node_12 = foundation.electrical.electrical;
+        node_21 = foundation.electrical.electrical;
+        node_22 = foundation.electrical.electrical;
+        node_32 = foundation.electrical.electrical;
+        node_41 = foundation.electrical.electrical;
+        node_42 = foundation.electrical.electrical;
+        node_43 = foundation.electrical.electrical;
+        node_23 = foundation.electrical.electrical;
+        node_51 = foundation.electrical.electrical;
+        node_52 = foundation.electrical.electrical;
+        node_53 = foundation.electrical.electrical;
+    end
+
+    annotations
+        UILayout = [
+            UIGroup('Main', ...
+                    temp)
+            UIGroup('Parasitic elements', ...
+                    specifyParasiticValues, capacitorSeriesResistance, inductorParallelConductance)
+            UIGroup('Smoothing functions', ...
+                    specifySmoothValues, aWarning, crossZero, dropPowerFlag, dropPowerHypEpsilon, expXh, expXl, hyperbolicMaximumAbsolute, smoothEpsilon, smoothN)
+                   ]
+    end
+
+    parameters
+        temp = {27, '1'};
+    end
+
+    parameters
+        specifyParasiticValues = ee.enum.include.no;    % Specify parasitic values
+    end
+
+    parameters(ExternalAccess=none)
+        capacitorSeriesResistance = {0, 'Ohm'};    % Capacitor parasitic series resistance
+        inductorParallelConductance = {0, '1/Ohm'};    % Inductor parasitic parallel conductance
+    end
+
+    if specifyParasiticValues == ee.enum.include.yes
+        annotations
+            [capacitorSeriesResistance, inductorParallelConductance] : ExternalAccess=modify;
+        end
+    end
+
+    parameters
+        specifySmoothValues = ee.enum.include.no;    % Specify function smooth parameters
+    end
+
+    parameters(ExternalAccess=none)
+        aWarning = ee.enum.include.no;    % Include warning
+        crossZero = ee.enum.include.no;    % Zero crossing for abs(x) and sign(x)
+        dropPowerFlag = ee.enum.function.powerFlag.hyp;    % sqrt(x) and x**y protection method
+        dropPowerHypEpsilon = {0, '1'};    % Epsilon for protection hyp function in modified sqrt(x) and (x)**(y), typical epsilon=1e-2
+        expXh = {Inf, '1'};    % Upper boundary of linear extrapolation for exp(x), typical x=80
+        expXl = {-Inf, '1'};    % Lower boundary of linear extrapolation for exp(x), typical x=-80
+        hyperbolicMaximumAbsolute = {Inf, '1'};    % Absolute boundary value of linear extrapolation for sinh(x) and cosh(x), typical x=80
+        smoothEpsilon = {0, '1'};    % Epsilon determines the start of the transition and the absolute error of the smoothing function in limit(x, a, b), max(x, y) and min(x, y)
+        smoothN = {1, '1'};    % The order of the smoothing function in limit(x, a, b), max(x, y) and min(x, y), typical n=1
+    end
+
+    if specifySmoothValues == ee.enum.include.yes
+        annotations
+            [aWarning, crossZero, dropPowerFlag, expXh, expXl, hyperbolicMaximumAbsolute, smoothEpsilon, smoothN] : ExternalAccess=modify;
+        end
+        if dropPowerFlag == ee.enum.function.powerFlag.hyp
+            annotations
+                dropPowerHypEpsilon : ExternalAccess=modify;
+            end
+        end
+    end
+
+    parameters(Access=private,ExternalAccess=none)
+        t0 = {25, '1'};
+    end
+
+    variables
+        E1 = {value={0,'A'},priority=priority.none};
+        E2 = {value={0,'A'},priority=priority.none};
+        E6 = {value={0,'A'},priority=priority.none};
+        E7 = {value={0,'A'},priority=priority.none};
+        G6 = {value={0,'A'},priority=priority.none};
+        G1 = {value={0,'A'},priority=priority.none};
+        G2 = {value={0,'A'},priority=priority.none};
+        E11 = {value={0,'A'},priority=priority.none};
+        G11 = {value={0,'A'},priority=priority.none};
+    end
+
+    components(ExternalAccess=observe)
+        V1 = ee.sources.voltage_source(dc_voltage={0,'V'});
+        V2 = ee.sources.voltage_source(dc_voltage={0,'V'});
+        L1 = foundation.electrical.elements.inductor(l={(5.0*1e-09),'H'},r={0,'Ohm'},g=inductorParallelConductance, ...
+            i_L.priority=priority.none);
+        R2 = foundation.electrical.elements.resistor(R={10,'Ohm'});
+        R5 = foundation.electrical.elements.resistor(R={(1*0.001),'Ohm'});
+        V6 = ee.sources.voltage_source(dc_voltage={0,'V'});
+        C6 = foundation.electrical.elements.capacitor(c={(1*1e-12),'F'},r=capacitorSeriesResistance,g={0,'1/Ohm'}, ...
+            vc.priority=priority.none);
+        R6 = foundation.electrical.elements.resistor(R={(1*1000000000000),'Ohm'});
+        C7 = foundation.electrical.elements.capacitor(c={(1*1e-12),'F'},r=capacitorSeriesResistance,g={0,'1/Ohm'}, ...
+            vc.priority=priority.none);
+        R3 = foundation.electrical.elements.resistor(R={(1*1000000000000),'Ohm'});
+        V3 = ee.sources.voltage_source(dc_voltage={0,'V'});
+        C1 = foundation.electrical.elements.capacitor(c={(1*1e-12),'F'},r=capacitorSeriesResistance,g={0,'1/Ohm'}, ...
+            vc.priority=priority.none);
+        C2 = foundation.electrical.elements.capacitor(c={(1.490*1e-09),'F'},r=capacitorSeriesResistance,g={0,'1/Ohm'}, ...
+            vc.priority=priority.none);
+        R4 = foundation.electrical.elements.resistor(R={(1*1000000000),'Ohm'});
+        V11 = ee.sources.voltage_source(dc_voltage={0,'V'});
+        V12 = ee.sources.voltage_source(dc_voltage={0,'V'});
+        C11 = foundation.electrical.elements.capacitor(c={(1*1e-12),'F'},r=capacitorSeriesResistance,g={0,'1/Ohm'}, ...
+            vc.priority=priority.none);
+        R11 = foundation.electrical.elements.resistor(R={(1*1000000000000),'Ohm'});
+    end
+
+    connections
+        connect(V1.p,node_1);
+        connect(V1.n,node_11);
+        connect(V2.p,node_2);
+        connect(V2.n,node_21);
+        connect(L1.p,node_3);
+        connect(L1.n,node_32);
+        connect(R2.p,node_3);
+        connect(R2.n,node_32);
+        connect(R5.p,node_4);
+        connect(R5.n,node_32);
+        connect(V6.p,node_41);
+        connect(V6.n,node_42);
+        connect(C6.p,node_43);
+        connect(C6.n,*);
+        connect(R6.p,node_43);
+        connect(R6.n,*);
+        connect(C7.p,node_12);
+        connect(C7.n,node_32);
+        connect(R3.p,node_12);
+        connect(R3.n,node_32);
+        connect(V3.p,node_22);
+        connect(V3.n,node_23);
+        connect(C1.p,node_23);
+        connect(C1.n,node_12);
+        connect(C2.p,node_22);
+        connect(C2.n,node_32);
+        connect(R4.p,node_22);
+        connect(R4.n,node_3);
+        connect(V11.p,node_32);
+        connect(V11.n,node_51);
+        connect(V12.p,node_52);
+        connect(V12.n,node_53);
+        connect(C11.p,node_53);
+        connect(C11.n,node_1);
+        connect(R11.p,node_52);
+        connect(R11.n,node_1);
+    end
+
+    branches
+        E1: node_11.i -> node_12.i;
+        E2: node_21.i -> node_22.i;
+        E6: node_41.i -> *;
+        E7: node_42.i -> node_43.i;
+        G6: node_43.i -> *;
+        G1: node_12.i -> node_32.i;
+        G2: node_22.i -> node_12.i;
+        E11: node_51.i -> node_52.i;
+        G11: node_52.i -> node_1.i;
+    end
+
+    equations
+        value(node_11.v-node_12.v,'V') == myLIB.sct3030ar_simscape_functions.r1(value(V1.i,'A'),aWarning,crossZero, ...
+            dropPowerFlag,dropPowerHypEpsilon,expXh,expXl,t0,temp);
+        value(node_21.v-node_22.v,'V') == myLIB.sct3030ar_simscape_functions.r2(value(V2.i,'A'));
+        value(node_41.v,'V') == simscape.function.minm(simscape.function.maxm(value(node_22.v-node_32.v,'V'),  ...
+            0, smoothN, smoothEpsilon), 22, smoothN, smoothEpsilon);
+        value(node_42.v-node_43.v,'V') == myLIB.sct3030ar_simscape_functions.v1(value(V6.i,'A'),aWarning,expXh, ...
+            expXl,hyperbolicMaximumAbsolute,t0,temp);
+        value(G6,'A') == simscape.function.minm(simscape.function.maxm(myLIB.sct3030ar_simscape_functions.v2( ...
+            simscape.function.maxm(value(node_43.v,'V'), 0, smoothN, smoothEpsilon),aWarning,dropPowerFlag,dropPowerHypEpsilon, ...
+            expXh,expXl,t0,temp), -500, smoothN, smoothEpsilon), 500, smoothN, smoothEpsilon);
+        value(G1,'A') == simscape.function.minm(simscape.function.maxm(myLIB.sct3030ar_simscape_functions.i1( ...
+            simscape.function.minm(simscape.function.maxm(value(V6.i,'A'), 0, smoothN, smoothEpsilon), (2*1000),  ...
+            smoothN, smoothEpsilon),value(node_12.v-node_32.v,'V'),aWarning,crossZero,expXh,expXl,hyperbolicMaximumAbsolute, ...
+            t0,temp), -300, smoothN, smoothEpsilon), 300, smoothN, smoothEpsilon);
+        value(G2,'A') == value(V3.i,'A')*myLIB.sct3030ar_simscape_functions.c1(value(node_22.v-node_12.v,'V'), ...
+            simscape.function.minm(simscape.function.maxm(value(node_22.v-node_12.v,'V'), 0, smoothN, smoothEpsilon),  ...
+            0.803, smoothN, smoothEpsilon),simscape.function.minm(value(node_22.v-node_12.v,'V'), 0, smoothN, smoothEpsilon), ...
+            aWarning,dropPowerFlag,dropPowerHypEpsilon);
+        value(node_51.v-node_52.v,'V') == myLIB.sct3030ar_simscape_functions.r11(value(V11.i,'A'),aWarning,expXh, ...
+            expXl,hyperbolicMaximumAbsolute,t0,temp);
+        value(G11,'A') == simscape.function.minm(simscape.function.maxm(myLIB.sct3030ar_simscape_functions.i11( ...
+            value(node_52.v-node_1.v,'V'),aWarning,expXh,expXl,t0,temp), -300, smoothN, smoothEpsilon), 300, smoothN,  ...
+            smoothEpsilon)+value(V12.i,'A')*myLIB.sct3030ar_simscape_functions.c11(simscape.function.maxm(value(node_52.v-node_1.v,'V'),  ...
+            1.083, smoothN, smoothEpsilon),simscape.function.minm(value(node_52.v-node_1.v,'V'), 1.083, smoothN,  ...
+            smoothEpsilon),aWarning,dropPowerFlag,dropPowerHypEpsilon);
+    end
+
+end

@@ -1,0 +1,5 @@
+function result = asinh(i)
+    definitions
+        result = asinh(X)
+    end
+end

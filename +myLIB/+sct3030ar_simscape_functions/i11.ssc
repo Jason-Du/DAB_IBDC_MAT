@@ -1,0 +1,17 @@
+function result = i11(v,aWarning,expXh,expXl,t0,temp)
+% function result = i11(v,aWarning,expXh,expXl,t0,temp)
+% Function automatically generated from a SPICE netlist for subcircuit SCT3030AR.
+
+%   MATLAB version: 9.11.
+%   Simscape Electrical version: 7.6.
+%   Simscape code generated on: 03-Dec-2021 00:34:24
+
+definitions
+    result = (38.98*1e-09)*(simscape.function.expm(v/0.09615/simscape.function.expm((temp-t0)/-277.8, expXl, expXh,  ...
+            aWarning), expXl, expXh, aWarning)-1)*simscape.function.expm((temp-t0)/-52.29*simscape.function.expm(( ...
+            temp-t0)/800.0, expXl, expXh, aWarning), expXl, expXh, aWarning)- (1*1e-06)*tanh(-v/0.1)*simscape.function.expm(( ...
+            temp-t0)/180.3, expXl, expXh, aWarning)-231.9e-21*(simscape.function.expm(-v/25, expXl, expXh, aWarning)-1)*simscape.function.expm(( ...
+            temp-t0)/-200, expXl, expXh, aWarning);
+end
+
+end
