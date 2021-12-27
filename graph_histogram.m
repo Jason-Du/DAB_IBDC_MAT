@@ -1,7 +1,8 @@
-C=debug_Vds_med_array;
+C=R_array;
 % C=debug_Vds_expand_array;
 C_count=size(C);
 numBins = 500;
+f3 = figure;
 histogram(C,numBins,'BinLimits',[min(C),max(C)],'EdgeColor','none');
 grid on;
 xlabel('Data Value', 'FontSize', 15);
